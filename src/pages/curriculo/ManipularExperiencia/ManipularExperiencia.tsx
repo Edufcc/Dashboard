@@ -30,8 +30,8 @@ const ManipularExperiencia: React.FC = () => {
         titulo: Yup.string().required('Campo obrigatório'),
         descricao: Yup.string(),
         tipo: Yup.string().required('Campo obrigatório'),
-        anoInicio: Yup.number().required('Campo obrigatório').typeError('Um número é obrigatório'),
-        anoFim: Yup.number().required('Campo obrigatório').typeError('Um número é obrigatório'),
+        anoInicio: Yup.number(),
+        anoFim: Yup.number(),
     });
 
     const onSubmit = async (values: Experiencia, { resetForm }: { resetForm: () => void }) => {
@@ -91,8 +91,8 @@ const ManipularExperiencia: React.FC = () => {
                             label='Tipo de experiência'
                             name='tipo'
                             options={[
-                                { value: 'profissional', label: 'Profissional'},
-                                { value: 'academica', label: 'Acadêmico'},
+                                { value: 'habilidade', label: 'Habilidade'},
+                                { value: 'experiencia', label: 'Experiencia'},
                             ]}
                             errors={errors.tipo}
                             touched={touched.tipo}
