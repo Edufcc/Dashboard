@@ -11,23 +11,23 @@ import { Projeto, getPortfolio } from '../../services/portfolioService';
 import { Experiencia, getExperienciaByTipo } from '../../services/experienciaService';
 
 const Home = () => {
-    const  [experienciasAcdemicas, setExperienciasAcademicas] = useState<Experiencia[]>([]);
-    const [experienciasProfissionais, setExperienciasProfissionais] = useState<Experiencia[]>([]);
+    const  [Experiencia, setExperiencias] = useState<Experiencia[]>([]);
+    const [Habilidade, setHabilidade] = useState<Experiencia[]>([]);
     const [portfolio, setPortfolio] = useState<Projeto[]>([]);
 
-    const fetchExperienciasAcademicas = async () => {
+    const fetchExperiencias= async () => {
         try {
             const response = await getExperienciaByTipo('academico');
-            setExperienciasAcademicas(response)
+            setExperiencias(response)
         } catch (error) {
             console.log(error);
         }
     };
 
-    const fetchExperienciasProfissionais = async () => {
+    const fetchHabilidade = async () => {
         try {
             const response = await getExperienciaByTipo('profissional');
-            setExperienciasProfissionais(response)
+            setHabilidade(response)
         } catch (error) {
             console.log(error);
         }
@@ -44,8 +44,8 @@ const Home = () => {
     };
 
     useEffect(() => {
-        fetchExperienciasAcademicas();
-        fetchExperienciasProfissionais()
+        fetchExperiencias();
+        fetchHabilidade()
         fetchPortfolio();
     }, []);
 
@@ -55,14 +55,14 @@ const Home = () => {
             <p>Este é o Dashboard do site onde você encontra algumas estatísticas de cadastros.</p>
             <div className={styles.infoBoxContainer}>
                 <InfoBox
-                    title='Experiências Acadêmicas'
-                    value={experienciasAcdemicas.length}
+                    title='Experiências'
+                    value={Experiencia.length}
                     // icon={<FaGraduationCap size={65}/>}
                 />
 
                 <InfoBox
-                    title='Experiências Profissionais'
-                    value={experienciasProfissionais.length}
+                    title='Habilidades'
+                    value={Habilidade.length}
                     // icon={<FaBriefcase/>}
                 />
 
