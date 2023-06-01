@@ -9,7 +9,7 @@ export interface Informacoes {
 }
 
 export async function updateInformacoes(informacoes:Informacoes): Promise<Informacoes> { 
-    const response = await api.put<Informacoes>('/informacoes/1 ', informacoes);
+    const response = await api.post<Informacoes>('/informacoes/1 ', informacoes);
     return response.data;
 }
  
@@ -19,7 +19,7 @@ export async function getInformacoes(): Promise<Informacoes> {
 }
 
 export const deleteInformacoes = async () : Promise<Informacoes> => {
-    const response = await api.delete<Informacoes>(`/infomacoes/1`);
+    const response = await api.delete<Informacoes>(`/informacoes/1`);
    return response.data;
 }
 
